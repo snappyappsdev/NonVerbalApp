@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NonVerbalApp</string>
+    <string name="api_error_pecs">Error Loading Pecs</string>
+    <string name="name">Picture Exchange Communicator Name</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="reset_pec">Reset</string>
+    <string name="save_pec">Save</string>
+    <string name="api_error_single_pec">Error loading Single pec</string>
+    <string name="screen_title_communicator">Communicator</string>
+    <string name="api_error_repos">Error Loading Pecs</string>
+</resources>
