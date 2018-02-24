@@ -25,6 +25,7 @@ import com.bluelinelabs.conductor.Controller;
 import com.snappyappsdev.nonverbalapp.R;
 import com.snappyappsdev.nonverbalapp.base.BaseController;
 import com.snappyappsdev.nonverbalapp.database.model.Pec;
+import com.snappyappsdev.nonverbalapp.ui.ScreenNavigator;
 import com.snappyappsdev.nonverbalapp.util.PictureUtils;
 
 import java.io.File;
@@ -34,6 +35,8 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import io.reactivex.disposables.Disposable;
+
+import static com.snappyappsdev.nonverbalapp.util.audio.AudioUtils.getPhotoFile;
 
 /**
  * Created by lrocha on 2/21/18.
@@ -53,6 +56,8 @@ public class PecDetailsController extends BaseController {
 
     @Inject PecDetailsViewModel viewModel;
     @Inject PecDetailsPresenter presenter;
+    @Inject ScreenNavigator screenNavigator;
+
 
     @BindView(R.id.tv_pec_title) TextView pecTitleText;
     @BindView(R.id.enter_title_text) EditText pecTitleEditText;
@@ -86,22 +91,35 @@ public class PecDetailsController extends BaseController {
         }
     }
 
-    public File getPhotoFile(){
-        File filesDir = getApplicationContext().getFilesDir();
-        return new File(filesDir, "temp.jpg");
-    }
+
     @Override
     protected void onViewBound(View view) {
         setEditTest();
-        //micButton.setOnClickListener(new ToastListener("Mic Button"));
-        mPhotoFile = getPhotoFile();
+        micButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                screenNavigator.goToAudioRecorder(pec.getTitle());
+            }
+        });
         setCameraButton();
-        //resetButton.setOnClickListener(new ToastListener("Reset Button"));
+        setResetButton();
         //saveButton.setOnClickListener(new ToastListener("Save Button"));
 
     }
 
+    private void setResetButton(){
+        resetButton.setOnClickListener( view -> {
+            pecTitleText.setText("Enter Pec Name");
+            pecTitleEditText.setText("");
+            pec.setTitle("");
+            mPhotoFile.delete();
+            updatePhotoView();
+            mPhotoFile = getPhotoFile(getApplicationContext());
+        });
+    }
+
     private void updatePhotoView() {
+
         if (mPhotoFile == null || !mPhotoFile.exists()) {
             mPecPhotoButton.setImageDrawable(null);
         } else {
@@ -112,6 +130,7 @@ public class PecDetailsController extends BaseController {
     }
 
     private void setCameraButton(){
+        mPhotoFile = getPhotoFile(getApplicationContext());
         PackageManager packageManager = getActivity().getPackageManager();
         final Intent captureImage = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         boolean canTakePhoto = mPhotoFile != null &&

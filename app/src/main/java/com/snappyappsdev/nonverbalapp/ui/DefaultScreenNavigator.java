@@ -7,6 +7,7 @@ import com.bluelinelabs.conductor.Router;
 import com.bluelinelabs.conductor.RouterTransaction;
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler;
 import com.snappyappsdev.nonverbalapp.details.PecDetailsController;
+import com.snappyappsdev.nonverbalapp.details.audio.PecAudioController;
 import com.snappyappsdev.nonverbalapp.di.ActivityScope;
 import com.snappyappsdev.nonverbalapp.lifecycle.ActivityLifecycleTask;
 
@@ -51,6 +52,16 @@ public class DefaultScreenNavigator extends ActivityLifecycleTask implements Scr
     public void goToPecDetails(String pecTitle) {
         if (router != null) {
             router.pushController(RouterTransaction.with(PecDetailsController.newInstance(pecTitle))
+                    .pushChangeHandler(new FadeChangeHandler())
+                    .popChangeHandler(new FadeChangeHandler()));
+        }
+    }
+
+
+    @Override
+    public void goToAudioRecorder(String pecTitle) {
+        if (router != null) {
+            router.pushController(RouterTransaction.with(PecAudioController.newInstance(pecTitle))
                     .pushChangeHandler(new FadeChangeHandler())
                     .popChangeHandler(new FadeChangeHandler()));
         }

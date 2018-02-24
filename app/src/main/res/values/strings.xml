@@ -8,4 +8,7 @@
     <string name="api_error_single_pec">Error loading Single pec</string>
     <string name="screen_title_communicator">Communicator</string>
     <string name="api_error_repos">Error Loading Pecs</string>
+    <string name="record_audio">Click the record button when ready</string>
+    <string name="stop_audio">Click the stop button when done</string>
+    <string name="play_audio">Click photo to hear audio</string>
 </resources>

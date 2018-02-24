@@ -5,6 +5,8 @@ import com.snappyappsdev.nonverbalapp.communicator.CommunicatorComponent;
 import com.snappyappsdev.nonverbalapp.communicator.CommunicatorController;
 import com.snappyappsdev.nonverbalapp.details.PecDetailsComponent;
 import com.snappyappsdev.nonverbalapp.details.PecDetailsController;
+import com.snappyappsdev.nonverbalapp.details.audio.PecAudioComponent;
+import com.snappyappsdev.nonverbalapp.details.audio.PecAudioController;
 import com.snappyappsdev.nonverbalapp.di.ControllerKey;
 
 import dagger.Binds;
@@ -18,7 +20,8 @@ import dagger.multibindings.IntoMap;
 
 @Module(subcomponents = {
         CommunicatorComponent.class,
-        PecDetailsComponent.class
+        PecDetailsComponent.class,
+        PecAudioComponent.class
 })
 public abstract class MainScreenBindingModule {
     @Binds
@@ -29,6 +32,11 @@ public abstract class MainScreenBindingModule {
     @Binds
     @IntoMap
     @ControllerKey(PecDetailsController.class)
-    abstract AndroidInjector.Factory<? extends Controller> bindRepoDetailsInjector(PecDetailsComponent.Builder builder);
+    abstract AndroidInjector.Factory<? extends Controller> bindPecDetailsInjector(PecDetailsComponent.Builder builder);
+
+    @Binds
+    @IntoMap
+    @ControllerKey(PecAudioController.class)
+    abstract AndroidInjector.Factory<? extends Controller> bindPecAudioInjector(PecAudioComponent.Builder builder);
 
 }

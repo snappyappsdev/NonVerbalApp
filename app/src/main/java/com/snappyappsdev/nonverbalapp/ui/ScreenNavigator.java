@@ -13,6 +13,7 @@ public interface ScreenNavigator {
     boolean pop();
 
     void goToPecDetails(String pecTitle);
+    void goToAudioRecorder(String pecTitle);
 
 
 }
