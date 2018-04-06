@@ -18,13 +18,13 @@ import timber.log.Timber;
  * Created by lrocha on 2/18/18.
  */
 @Singleton
-public class PecService {
+public class PecCacheService {
 
     private final List<Pec> cachedPecs = new ArrayList<>();
     private final Scheduler scheduler;
     private final PecDao pecDao;
 
-    public PecService(Scheduler scheduler,AppDatabase appDatabase) {
+    public PecCacheService(Scheduler scheduler, AppDatabase appDatabase) {
         this.scheduler = scheduler;
         this.pecDao = appDatabase.pecDao();
     }

@@ -1,6 +1,6 @@
 package com.snappyappsdev.nonverbalapp.details;
 
-import com.snappyappsdev.nonverbalapp.database.model.PecService;
+import com.snappyappsdev.nonverbalapp.database.model.PecCacheService;
 import com.snappyappsdev.nonverbalapp.di.ForScreen;
 import com.snappyappsdev.nonverbalapp.lifecycle.DisposableManager;
 
@@ -15,7 +15,7 @@ public class PecDetailsPresenter {
     @Inject
     PecDetailsPresenter(
             @Named("pec_title") String pecTitle,
-            PecService pecService,
+            PecCacheService pecService,
             PecDetailsViewModel viewModel,
             @ForScreen DisposableManager disposableManager) {
     }

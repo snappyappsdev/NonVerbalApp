@@ -3,7 +3,7 @@ package com.snappyappsdev.nonverbalapp.database;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
-import com.snappyappsdev.nonverbalapp.database.model.PecService;
+import com.snappyappsdev.nonverbalapp.database.model.PecCacheService;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -39,7 +39,7 @@ public abstract class TestDatabaseModule {
 
     @Provides
     @Singleton
-    static PecService providePecService(@Named("database_scheduler") Scheduler scheduler,AppDatabase db){
-        return new PecService(scheduler,db);
+    static PecCacheService providePecService(@Named("database_scheduler") Scheduler scheduler, AppDatabase db){
+        return new PecCacheService(scheduler,db);
     }
 }

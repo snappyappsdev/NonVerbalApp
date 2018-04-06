@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.snappyappsdev.nonverbalapp.database.model.Pec;
-import com.snappyappsdev.nonverbalapp.database.model.PecService;
+import com.snappyappsdev.nonverbalapp.database.model.PecCacheService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import io.reactivex.Single;
  * Created by lrocha on 2/18/18.
  */
 @Singleton
-public class TestPecService  extends PecService {
+public class TestPecService  extends PecCacheService {
 
     public static final int FLAG_PECS = 1;
     public static final int FLAG_GET_PEC = 2;

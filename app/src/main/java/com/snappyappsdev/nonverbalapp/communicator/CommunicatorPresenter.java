@@ -1,7 +1,7 @@
 package com.snappyappsdev.nonverbalapp.communicator;
 
 import com.snappyappsdev.nonverbalapp.database.model.Pec;
-import com.snappyappsdev.nonverbalapp.database.model.PecService;
+import com.snappyappsdev.nonverbalapp.database.model.PecCacheService;
 import com.snappyappsdev.nonverbalapp.di.ForScreen;
 import com.snappyappsdev.nonverbalapp.di.ScreenScope;
 import com.snappyappsdev.nonverbalapp.lifecycle.DisposableManager;
@@ -18,14 +18,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 public class CommunicatorPresenter {
 
     private final CommunicatorViewModel viewModel;
-    private final PecService pecService;
+    private final PecCacheService pecService;
     private final DisposableManager disposableManager;
     private final RecyclerDataSource dataSource;
 
     @Inject
     CommunicatorPresenter(
             CommunicatorViewModel viewModel,
-            PecService pecService,
+            PecCacheService pecService,
             @ForScreen DisposableManager disposableManager,
             RecyclerDataSource dataSource) {
         this.viewModel = viewModel;

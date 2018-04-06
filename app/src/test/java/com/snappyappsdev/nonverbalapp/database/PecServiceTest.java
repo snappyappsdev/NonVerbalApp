@@ -1,8 +1,8 @@
 package com.snappyappsdev.nonverbalapp.database;
 
 import com.snappyappsdev.nonverbalapp.database.model.Pec;
+import com.snappyappsdev.nonverbalapp.database.model.PecCacheService;
 import com.snappyappsdev.nonverbalapp.database.model.PecDao;
-import com.snappyappsdev.nonverbalapp.database.model.PecService;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +27,7 @@ public class PecServiceTest {
     @Mock AppDatabase appDatabaseMock;
     @Mock PecDao pecDao;
 
-    private PecService pecService;
+    private PecCacheService pecService;
 
     private Pec otherPec;
 
@@ -38,7 +38,7 @@ public class PecServiceTest {
         when(appDatabaseMock.pecDao()).thenReturn(pecDao);
         when(pecDao.getPecs()).thenReturn(Flowable.just(getDbMockPecs()));
 
-        pecService = new PecService(Schedulers.trampoline() , appDatabaseMock);
+        pecService = new PecCacheService(Schedulers.trampoline() , appDatabaseMock);
     }
 
     @Test

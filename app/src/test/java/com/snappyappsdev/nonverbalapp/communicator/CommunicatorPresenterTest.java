@@ -1,7 +1,7 @@
 package com.snappyappsdev.nonverbalapp.communicator;
 
 import com.snappyappsdev.nonverbalapp.database.model.Pec;
-import com.snappyappsdev.nonverbalapp.database.model.PecService;
+import com.snappyappsdev.nonverbalapp.database.model.PecCacheService;
 import com.snappyappsdev.nonverbalapp.lifecycle.DisposableManager;
 import com.snappyappsdev.nonverbalapp.ui.ScreenNavigator;
 
@@ -36,7 +36,8 @@ public class CommunicatorPresenterTest {
         RxAndroidPlugins.setInitMainThreadSchedulerHandler(schedulerCallable -> Schedulers.trampoline());
     }
 
-    @Mock PecService pecService;
+    @Mock
+    PecCacheService pecService;
     @Mock CommunicatorViewModel viewModel;
     @Mock Consumer<Throwable> onErrorConsumer;
     @Mock Consumer<Boolean> loadingConsumer;
